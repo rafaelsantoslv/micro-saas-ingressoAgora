@@ -1,9 +1,15 @@
 'use client'
-import { useState, useEffect } from 'react'
-import { Search, ArrowRight, Calendar, ChevronLeft, ChevronRight } from 'lucide-react'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { useState } from 'react'
+import { Search, ArrowRight, Calendar } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import Image from 'next/image'
 import {
   Carousel,
@@ -11,52 +17,56 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel"
+} from '@/components/ui/carousel'
 
 export default function Component() {
   const [searchQuery, setSearchQuery] = useState('')
-  const [currentIndex, setCurrentIndex] = useState(0)  // Índice do carrossel
+  const [currentIndex, setCurrentIndex] = useState(0) // Índice do carrossel
 
   const eventosDestacados = [
     {
       id: 1,
-      nome: "Festival de Música de Verão",
-      resumo: "Junte-se a nós para três dias de música ininterrupta com os melhores artistas do mundo.",
-      imagem: "/images/image1.jpeg",
-      data: "Sáb, 07 de novembro"
+      nome: 'Festival de Música de Verão',
+      resumo:
+        'Junte-se a nós para três dias de música ininterrupta com os melhores artistas do mundo.',
+      imagem: '/images/image1.jpeg',
+      data: 'Sáb, 07 de novembro',
     },
     {
       id: 2,
-      nome: "Conferência de Tecnologia 2023",
-      resumo: "Explore as últimas tendências e inovações tecnológicas com líderes da indústria.",
-      imagem: "/images/image1.jpeg",
-      data: "Sáb, 07 de novembro"
+      nome: 'Conferência de Tecnologia 2023',
+      resumo:
+        'Explore as últimas tendências e inovações tecnológicas com líderes da indústria.',
+      imagem: '/images/image1.jpeg',
+      data: 'Sáb, 07 de novembro',
     },
     {
       id: 3,
-      nome: "Exposição de Arte Moderna",
-      resumo: "Uma jornada visual através das obras mais provocativas e inspiradoras da arte contemporâneaaaaaaaaaaaaaaaaaaaaaaaaaaaa.",
-      imagem: "/images/image1.jpeg",
-      data: "Sáb, 07 de novembro"
-    }
+      nome: 'Exposição de Arte Moderna',
+      resumo:
+        'Uma jornada visual através das obras mais provocativas e inspiradoras da arte contemporâneaaaaaaaaaaaaaaaaaaaaaaaaaaaa.',
+      imagem: '/images/image1.jpeg',
+      data: 'Sáb, 07 de novembro',
+    },
   ]
 
   const eventosPrincipais = [
-    { id: 4, nome: "Noite de Comédia", imagem: "/images/image1.jpeg" },
-    { id: 5, nome: "Festival Gastronômico", imagem: "/images/image1.jpeg" },
-    { id: 6, nome: "Maratona 2023", imagem: "/images/image1.jpeg"},
-    { id: 7, nome: "Feira do Livro", imagem: "/images/image1.jpeg" },
-    { id: 8, nome: "Estreia de Filme", imagem: "/images/image1.jpeg" },
-    { id: 9, nome: "Simpósio de Ciências", imagem: "/images/image1.jpeg" },
-    { id: 10, nome: "Desfile de Moda", imagem: "/images/image1.jpeg" },
+    { id: 4, nome: 'Noite de Comédia', imagem: '/images/image1.jpeg' },
+    { id: 5, nome: 'Festival Gastronômico', imagem: '/images/image1.jpeg' },
+    { id: 6, nome: 'Maratona 2023', imagem: '/images/image1.jpeg' },
+    { id: 7, nome: 'Feira do Livro', imagem: '/images/image1.jpeg' },
+    { id: 8, nome: 'Estreia de Filme', imagem: '/images/image1.jpeg' },
+    { id: 9, nome: 'Simpósio de Ciências', imagem: '/images/image1.jpeg' },
+    { id: 10, nome: 'Desfile de Moda', imagem: '/images/image1.jpeg' },
   ]
-
 
   return (
     <div className="min-h-screen bg-background">
       <header className="py-6 px-4 md:px-6 bg-primary text-primary-foreground">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-          <h1 className="text-3xl font-bold mb-4 md:mb-0 text-primary-foreground">IngressoAgora</h1>
+          <h1 className="text-3xl font-bold mb-4 md:mb-0 text-primary-foreground">
+            IngressoAgora
+          </h1>
           <div className="flex w-full md:w-auto">
             <Input
               className="w-full md:w-64 mr-2 placeholder:text-primary-foreground"
@@ -100,9 +110,16 @@ export default function Component() {
 
                     {/* Conteúdo alinhado à esquerda */}
                     <div className="p-6 flex flex-col justify-between w-full md:w-2/3">
-                      <h3 className="text-xl font-semibold mb-2">{evento.nome}</h3>
-                      <p className="text-muted-foreground mb-4">{evento.resumo}</p>
-                      <p className="text-sm text-muted-foreground mb-4">{evento.data}</p> {/* Data do evento */}
+                      <h3 className="text-xl font-semibold mb-2">
+                        {evento.nome}
+                      </h3>
+                      <p className="text-muted-foreground mb-4">
+                        {evento.resumo}
+                      </p>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        {evento.data}
+                      </p>{' '}
+                      {/* Data do evento */}
                       <Button>Ver Detalhes</Button>
                     </div>
                   </div>
@@ -128,20 +145,19 @@ export default function Component() {
                       layout="fill"
                       objectFit="cover"
                       className="rounded-t-lg"
-                      
                     />
                   </div>
                 </CardHeader>
                 <CardContent>
-                <CardTitle className="flex flex-col">
-                  {evento.nome}
-                  <div className="text-primary text-base">
-                    ter, 31 de dezembro
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    Fazenda do Rosa, Imbituba SC
-                  </div>
-                </CardTitle>
+                  <CardTitle className="flex flex-col">
+                    {evento.nome}
+                    <div className="text-primary text-base">
+                      ter, 31 de dezembro
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Fazenda do Rosa, Imbituba SC
+                    </div>
+                  </CardTitle>
                 </CardContent>
 
                 <CardFooter>
