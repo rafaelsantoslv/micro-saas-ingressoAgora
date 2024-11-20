@@ -6,7 +6,6 @@ import {
   MixerVerticalIcon,
   PersonIcon,
 } from '@radix-ui/react-icons'
-import { Settings2Icon } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 
 import {
@@ -29,35 +28,34 @@ export function MainSidebar() {
   const isActive = (path: string) => pathname === path
 
   return (
-    <Sidebar className="w-64">
+    <Sidebar className="flex flex-col w-64 min-h-screen">
       <SidebarHeader>
         <Logo />
       </SidebarHeader>
-      <SidebarMain className="flex flex-grow flex-col">
-        <SidebarNav>
+      <SidebarMain className="flex flex-col flex-grow">
+        <SidebarNav className="flex-grow">
           <SidebarNavMain>
-            <SidebarNavLink href="/app" active={isActive('/app')}>
+            <SidebarNavLink href="/admin" active={isActive('/admin')}>
               <HomeIcon className="mr-3 h-4 w-4" />
-              Home
+              Meus Eventos
             </SidebarNavLink>
             <SidebarNavLink
-              href="/app/pacientes"
-              active={isActive('/app/pacientes')}
+              href="/admin/ingressos"
+              active={isActive('/admin/ingressos')}
             >
               <PersonIcon className="mr-3 h-4 w-4" />
-              Pacientes
-            </SidebarNavLink>
-            <SidebarNavLink href="/app/laudos" active={isActive('/app/laudos')}>
-              <FileTextIcon className="mr-3 h-4 w-4" />
-              Laudos
-            </SidebarNavLink>
-            <SidebarNavLink href="/app/admin" active={isActive('/app/admin')}>
-              <Settings2Icon className="mr-3 h-4 w-4" />
-              Administração
+              Ingressos
             </SidebarNavLink>
             <SidebarNavLink
-              href="/app/settings"
-              active={isActive('/app/settings')}
+              href="/admin/relatorios"
+              active={isActive('/admin/relatorios')}
+            >
+              <FileTextIcon className="mr-3 h-4 w-4" />
+              Relatórios
+            </SidebarNavLink>
+            <SidebarNavLink
+              href="/admin/settings"
+              active={isActive('/admin/settings')}
             >
               <MixerVerticalIcon className="mr-3 h-4 w-4" />
               Configurações
@@ -65,7 +63,7 @@ export function MainSidebar() {
           </SidebarNavMain>
         </SidebarNav>
 
-        <SidebarNav className="mt-auto">
+        <SidebarNav>
           <SidebarNavHeader>
             <SidebarNavHeaderTitle>Links Extras</SidebarNavHeaderTitle>
           </SidebarNavHeader>
@@ -75,7 +73,7 @@ export function MainSidebar() {
           </SidebarNavMain>
         </SidebarNav>
       </SidebarMain>
-      <SidebarFooter>
+      <SidebarFooter className="mt-auto">
         <UserDropdown />
       </SidebarFooter>
     </Sidebar>
