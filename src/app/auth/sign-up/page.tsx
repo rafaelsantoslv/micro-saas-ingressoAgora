@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import AuthInput from '../_components/authInput'
 
 export default function SignUpPage() {
   return (
@@ -11,29 +10,42 @@ export default function SignUpPage() {
       </Button>
       <div className="w-full max-w-[400px] space-y-6">
         <div className="space-y-2 text-center">
-          <h1 className="text-2xl font-semibold tracking-tight">
-            Criar conta grátis
-          </h1>
+          <h1 className="text-2xl font-semibold tracking-tight">Criar conta</h1>
           <p className="text-sm text-muted-foreground">
             Seja um cliente e adquira seus ingressos agora!
           </p>
         </div>
 
         <form className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="managerName">Seu nome</Label>
-            <Input id="managerName" name="managerName" type="text" required />
-          </div>
+          <AuthInput
+            labelInput="Seu nome completo"
+            typeInput="text"
+            nameInput="clientName"
+          />
 
-          <div className="space-y-2">
-            <Label htmlFor="email">Seu e-mail</Label>
-            <Input id="email" name="email" type="email" required />
-          </div>
+          <AuthInput
+            labelInput="Seu e-mail"
+            typeInput="email"
+            nameInput="clientEmail"
+          />
 
-          <div className="space-y-2">
-            <Label htmlFor="phone">Seu celular</Label>
-            <Input id="phone" name="phone" type="tel" required />
-          </div>
+          <AuthInput
+            labelInput="Seu número de celular"
+            typeInput="tel"
+            nameInput="clientTelephony"
+          />
+
+          <AuthInput
+            labelInput="Sua senha"
+            typeInput="password"
+            nameInput="clientPassword"
+          />
+
+          <AuthInput
+            labelInput="Sua confirmação de senha"
+            typeInput="password"
+            nameInput="clientPasswordConfirm"
+          />
 
           <Button className="w-full" type="submit">
             Finalizar Cadastro
@@ -68,7 +80,7 @@ export default function SignUpPage() {
         </div>
 
         <Button variant="outline" asChild className="w-full">
-          <Link href="/sign-in">Já tem uma conta? Faça login</Link>
+          <Link href="/auth/sign-in">Já tem uma conta? Faça login</Link>
         </Button>
       </div>
     </div>

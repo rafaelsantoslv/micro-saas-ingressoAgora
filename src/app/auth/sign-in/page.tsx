@@ -1,7 +1,6 @@
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 import Link from 'next/link'
+import AuthInput from '../_components/authInput'
 
 export default function SignInPage() {
   return (
@@ -13,24 +12,26 @@ export default function SignInPage() {
         <div className="flex flex-col justify-center gap-6">
           <div className="flex flex-col gap-2 text-center">
             <h1 className="text-2xl font-semibold tracking-tight">
-              Acessar Eventos
+              Acessar Conta
             </h1>
             <p className="text-sm text-muted-foreground">
               Acompanhe seus ingressos por aqui!
             </p>
           </div>
           <form className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="email">Seu e-mail</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="Digite seu e-mail"
-                required
-              />
-            </div>
+            <AuthInput
+              labelInput="Seu e-mail"
+              typeInput="text"
+              nameInput="clientEmail"
+            />
+
+            <AuthInput
+              labelInput="Sua senha"
+              typeInput="password"
+              nameInput="clientPassword"
+            />
             <Button className="w-full" type="submit">
-              Acessar
+              Entrar
             </Button>
           </form>
         </div>
