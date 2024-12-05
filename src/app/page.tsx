@@ -18,6 +18,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
+import { UserDropdown } from '@/components/UserDropDown'
 
 export default function Component() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -50,6 +51,8 @@ export default function Component() {
     },
   ]
 
+  const teste = true
+
   const eventosPrincipais = [
     { id: 4, nome: 'Noite de Comédia', imagem: '/images/image1.jpeg' },
     { id: 5, nome: 'Festival Gastronômico', imagem: '/images/image1.jpeg' },
@@ -79,10 +82,15 @@ export default function Component() {
               Buscar
             </Button>
           </div>
-          <Button variant="secondary" className="mt-4 md:mt-0">
-            Entrar
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+
+          {teste ? (
+            <UserDropdown />
+          ) : (
+            <Button variant="secondary" className="mt-4 md:mt-0">
+              Entrar
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          )}
         </div>
       </header>
 
