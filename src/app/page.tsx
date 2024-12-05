@@ -1,8 +1,6 @@
 'use client'
-import { useState } from 'react'
-import { Search, ArrowRight, Calendar } from 'lucide-react'
+import { Calendar } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import {
   Card,
   CardContent,
@@ -18,10 +16,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
-import { UserDropdown } from '@/components/UserDropDown'
 
 export default function Component() {
-  const [searchQuery, setSearchQuery] = useState('')
+  // const [searchQuery, setSearchQuery] = useState('')
 
   const eventosDestacados = [
     {
@@ -50,8 +47,6 @@ export default function Component() {
     },
   ]
 
-  const teste = true
-
   const eventosPrincipais = [
     { id: 4, nome: 'Noite de Comédia', imagem: '/images/image1.jpeg' },
     { id: 5, nome: 'Festival Gastronômico', imagem: '/images/image1.jpeg' },
@@ -64,35 +59,6 @@ export default function Component() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="py-6 px-4 md:px-6 bg-primary text-primary-foreground">
-        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-          <h1 className="text-3xl font-bold mb-4 md:mb-0 text-primary-foreground">
-            IngressoAgora
-          </h1>
-          <div className="flex w-full md:w-auto">
-            <Input
-              className="w-full md:w-64 mr-2 placeholder:text-primary-foreground"
-              placeholder="Buscar eventos..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            <Button variant={'secondary'}>
-              <Search className="h-4 w-4 mr-2" />
-              Buscar
-            </Button>
-          </div>
-
-          {teste ? (
-            <UserDropdown />
-          ) : (
-            <Button variant="secondary" className="mt-4 md:mt-0">
-              Entrar
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          )}
-        </div>
-      </header>
-
       <main className="container mx-auto px-4 py-8">
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Eventos em Destaque</h2>

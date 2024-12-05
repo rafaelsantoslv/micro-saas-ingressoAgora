@@ -1,3 +1,4 @@
+import Header from '@/components/Header'
 import './globals.css'
 
 import type { Metadata } from 'next'
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={inter.className}>
+        <Header />
         {children}
         <Toaster richColors closeButton />
       </body>
