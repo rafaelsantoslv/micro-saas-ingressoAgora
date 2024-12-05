@@ -5,6 +5,8 @@ import { ptBR } from 'date-fns/locale'
 
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 interface TicketCardProps {
   ticket: {
@@ -51,6 +53,13 @@ export function TicketCard({ ticket }: TicketCardProps) {
         <Badge variant="secondary">
           {ticket.status === 'actived' ? 'Ativo' : 'inativo'}
         </Badge>
+        {ticket.status === 'actived' ? (
+          <Button asChild>
+            <Link href={`/meus-ingressos/${ticket.id}`}>Ver Ingresso</Link>
+          </Button>
+        ) : (
+          ''
+        )}
       </CardFooter>
     </Card>
   )

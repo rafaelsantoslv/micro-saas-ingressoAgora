@@ -15,7 +15,7 @@ const mockTickets = [
     eventDate: '2024-03-22T14:00:00Z',
     ticketType: 'Camarote',
     bannerUrl: '/images/image1.jpeg',
-    status: 'inactived',
+    status: 'actived',
   },
   {
     id: '3',
@@ -23,7 +23,7 @@ const mockTickets = [
     eventDate: '2024-01-27T16:00:00Z',
     ticketType: 'Comum',
     bannerUrl: '/images/image1.jpeg',
-    status: 'actived',
+    status: 'inactived',
   },
 ]
 
