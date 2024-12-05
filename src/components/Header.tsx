@@ -5,6 +5,7 @@ import { Input } from './ui/input'
 import { Button } from './ui/button'
 import { ArrowRight, Search } from 'lucide-react'
 import { UserDropdown } from './UserDropDown'
+import Link from 'next/link'
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState('')
@@ -12,9 +13,11 @@ const Header = () => {
   return (
     <header className="py-6 px-4 md:px-6 bg-primary text-primary-foreground">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-        <h1 className="text-3xl font-bold mb-4 md:mb-0 text-primary-foreground">
-          IngressoAgora
-        </h1>
+        <Link href={'/'}>
+          <h1 className="text-3xl font-bold mb-4 md:mb-0 text-primary-foreground">
+            IngressoAgora
+          </h1>
+        </Link>
         <div className="flex w-full md:w-auto">
           <Input
             className="w-full md:w-64 mr-2 placeholder:text-primary-foreground"

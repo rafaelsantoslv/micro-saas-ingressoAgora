@@ -16,6 +16,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
+import Link from 'next/link'
 
 export default function Component() {
   // const [searchQuery, setSearchQuery] = useState('')
@@ -134,10 +135,12 @@ export default function Component() {
                 </CardContent>
 
                 <CardFooter>
-                  <Button variant="outline" className="w-full">
-                    <Calendar className="mr-2 h-4 w-4" />
-                    Ver Evento
-                  </Button>
+                  <Link href={`/evento/${evento.id}`}>
+                    <Button variant="outline" className="w-full">
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Ver Evento
+                    </Button>
+                  </Link>
                 </CardFooter>
               </Card>
             ))}

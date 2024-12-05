@@ -17,6 +17,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import Link from 'next/link'
 
 export function UserDropdown() {
   return (
@@ -32,7 +33,7 @@ export function UserDropdown() {
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">shadcn</p>
+            <p className="text-sm font-medium leading-none">Rafael Santos</p>
             <p className="text-xs leading-none text-primary-foreground">
               m@example.com
             </p>
@@ -40,9 +41,11 @@ export function UserDropdown() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <HomeIcon className="mr-2 h-4 w-4" />
-            <span>Meus Ingressos</span>
+          <DropdownMenuItem asChild>
+            <Link href={'/meus-ingressos/'}>
+              <HomeIcon className="mr-2 h-4 w-4" />
+              <span>Meus Ingressos</span>
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <RocketIcon className="mr-2 h-4 w-4" />
