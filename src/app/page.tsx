@@ -22,7 +22,6 @@ import { UserDropdown } from '@/components/UserDropDown'
 
 export default function Component() {
   const [searchQuery, setSearchQuery] = useState('')
-  const [currentIndex, setCurrentIndex] = useState(0) // Índice do carrossel
 
   const eventosDestacados = [
     {
