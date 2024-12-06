@@ -1,11 +1,10 @@
 import { PropsWithChildren } from 'react'
-
-import { MainSidebar } from './_components/main-sidebar'
+import { HeaderSide } from './_components/Aside'
 
 export default function Layout({ children }: PropsWithChildren) {
   return (
-    <div className="grid grid-cols-[16rem_1fr] gap-4">
-      <MainSidebar />
+    <div className="container mx-auto px-4 py-8">
+      <HeaderSide />
       <main>{children}</main>
     </div>
   )

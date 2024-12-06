@@ -19,6 +19,8 @@ import {
 } from '@/components/ui/dropdown-menu'
 import Link from 'next/link'
 
+const isAdmin = true
+
 export function UserDropdown() {
   return (
     <DropdownMenu>
@@ -51,6 +53,16 @@ export function UserDropdown() {
             <RocketIcon className="mr-2 h-4 w-4" />
             <span>Editar meus dados</span>
           </DropdownMenuItem>
+          {isAdmin ? (
+            <DropdownMenuItem asChild>
+              <Link href={'/admin/'}>
+                <RocketIcon className="mr-2 h-4 w-4" />
+                <span>Administração</span>
+              </Link>
+            </DropdownMenuItem>
+          ) : (
+            ''
+          )}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
