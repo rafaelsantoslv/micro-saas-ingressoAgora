@@ -1,6 +1,7 @@
+'use client'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import AuthInput from '../_components/authInput'
+import SignInForm from '../_components/SignInForm'
 
 export default function SignInPage() {
   return (
@@ -18,22 +19,7 @@ export default function SignInPage() {
               Acompanhe seus ingressos por aqui!
             </p>
           </div>
-          <form className="space-y-4">
-            <AuthInput
-              labelInput="Seu e-mail"
-              typeInput="text"
-              nameInput="clientEmail"
-            />
-
-            <AuthInput
-              labelInput="Sua senha"
-              typeInput="password"
-              nameInput="clientPassword"
-            />
-            <Button className="w-full" type="submit">
-              Entrar
-            </Button>
-          </form>
+          <SignInForm />
         </div>
       </div>
     </div>
