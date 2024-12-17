@@ -2,7 +2,6 @@ import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import { prisma } from '@/services/database'
-import { compareSync } from 'bcrypt'
 
 const handler = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
@@ -27,14 +26,14 @@ const handler = NextAuth({
         const user = await prisma.user.findUnique({
           where: { email },
         })
-
+        console.log(user)
         if (!user) {
           return null
         }
 
-        const passwordMatch = compareSync(password, user.password ?? '')
+        // const passwordMatch = compareSync(password, user.password ?? '')
 
-        if (passwordMatch) {
+        if (user.password === password) {
           return { id: user.id, name: user.name, email: user.email }
         }
         return null

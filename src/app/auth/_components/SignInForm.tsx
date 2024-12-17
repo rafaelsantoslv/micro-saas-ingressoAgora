@@ -24,7 +24,7 @@ const SignInForm = () => {
       email: data.email,
       password: data.password,
       redirect: true,
-      callbackUrl: '/admin',
+      callbackUrl: '/app/admin',
     })
     console.log(response)
   }

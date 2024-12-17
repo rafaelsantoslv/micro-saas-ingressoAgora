@@ -1,20 +1,26 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
+import { getToken } from 'next-auth/jwt'
 
-import { getUrl } from '@/lib/get-url'
+export async function middleware(req) {
+  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET })
+  const { pathname } = req.nextUrl
 
-export function middleware(request: NextRequest) {
-  const token = request.cookies.get('authjs.session-token')
-  const pathname = request.nextUrl.pathname
-
-  if (pathname === '/auth' && token) {
-    return NextResponse.redirect(new URL(getUrl('/admin')))
+  // Se o usuário estiver logado, impede o acesso à página de login
+  if (token && pathname.startsWith('/auth/sign-in')) {
+    // Redireciona para a página principal, por exemplo /app
+    const url = new URL('/', req.url)
+    return NextResponse.redirect(url)
   }
 
-  if (pathname.includes('/admin') && !token) {
-    return NextResponse.redirect(new URL(getUrl('/auth/sign-in')))
+  // Se não estiver logado, redireciona para a página de login se tentar acessar as páginas protegidas
+  if (!token && pathname.startsWith('/app')) {
+    const url = new URL('/auth/sign-in', req.url)
+    return NextResponse.redirect(url)
   }
+
+  return NextResponse.next()
 }
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+  matcher: ['/app/:path*', '/auth/sign-in'], // Aplica o middleware nas rotas protegidas e de login
 }

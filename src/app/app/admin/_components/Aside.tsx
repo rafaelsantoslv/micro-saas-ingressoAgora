@@ -2,9 +2,9 @@ import Link from 'next/link'
 import { DollarSign, CreditCard, Calendar, Menu } from 'lucide-react'
 
 const navItems = [
-  { icon: DollarSign, label: 'Vendas', href: '/admin/vendas' },
-  { icon: CreditCard, label: 'Pagamentos', href: '/admin/pagamentos' },
-  { icon: Calendar, label: 'Eventos', href: '/admin/eventos' },
+  { icon: DollarSign, label: 'Vendas', href: '/app/admin/vendas' },
+  { icon: CreditCard, label: 'Pagamentos', href: '/app/admin/pagamentos' },
+  { icon: Calendar, label: 'Eventos', href: '/app/admin/eventos' },
 ]
 
 export function HeaderSide() {
