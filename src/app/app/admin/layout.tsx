@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react'
-import { HeaderSide } from './_components/Aside'
+import { HeaderSide } from '../../../components/Aside'
 
 export default function Layout({ children }: PropsWithChildren) {
   return (

@@ -1,6 +1,6 @@
-import EventBanner from './_components/eventBanner'
-import CardPaymentsMethods from './_components/cardPaymentsMethods'
-import EventDescription from './_components/eventDescription'
+import CardPaymentsMethods from '@/components/cardPaymentsMethods'
+import EventBanner from '@/components/eventBanner'
+import EventDescription from '@/components/eventDescription'
 
 // Esta função seria usada para buscar os detalhes do evento com base no ID
 async function getEventDetails(id: string) {

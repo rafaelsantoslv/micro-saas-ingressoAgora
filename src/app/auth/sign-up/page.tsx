@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import AuthInput from '../_components/authInput'
+import AuthInput from '../../../components/authInput'
 
 export default function SignUpPage() {
   return (

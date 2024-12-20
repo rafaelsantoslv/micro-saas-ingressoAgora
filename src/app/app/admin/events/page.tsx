@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import EventManagement from './_components/EventManagement'
+import EventManagement from '../../../../components/EventManagement'
 
 export const metadata: Metadata = {
   title: 'Gestão de Eventos',

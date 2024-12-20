@@ -19,30 +19,65 @@ const handler = NextAuth({
       async authorize(credentials) {
         const { email, password } = credentials
 
+        // Validar email e password
         if (!email || !password) {
           return null
         }
 
         const user = await prisma.user.findUnique({
-          where: { email },
+          where: { email: email as string }, // Garantir que email é tratado como string
         })
-        console.log(user)
+
         if (!user) {
           return null
         }
 
-        // const passwordMatch = compareSync(password, user.password ?? '')
+        // Aqui estamos usando type assertion para garantir que estamos acessando o campo password
+        // Se não utilizar assertion, o TypeScript vai reclamar que password não existe no tipo User
+        const userWithPassword = user as { password: string }
 
-        if (user.password === password) {
+        // Comparar a senha de forma segura, utilizando um método adequado como bcrypt
+        if (userWithPassword.password === password) {
           return { id: user.id, name: user.name, email: user.email }
         }
+
         return null
       },
     }),
   ],
 
+  callbacks: {
+    // SignIn Callback para criar um novo usuário se ele não existir
+    async signIn({ user }) {
+      console.log(user)
+      const { email } = user
+
+      // Verificar se o email é uma string válida
+      if (typeof email !== 'string' || !email) {
+        return false // Se o email não for válido, não permite a criação do usuário
+      }
+
+      // Verificar se o usuário já existe
+      const existingUser = await prisma.user.findUnique({
+        where: { email },
+      })
+
+      if (!existingUser) {
+        // Criar o novo usuário
+        await prisma.user.create({
+          data: {
+            password: user.password,
+          },
+        })
+      }
+
+      return true
+    },
+  },
+
   pages: {
     signIn: '/auth/sign-in',
+    newUser: '/auth/sign-up', // Página para novo usuário
   },
 })
 

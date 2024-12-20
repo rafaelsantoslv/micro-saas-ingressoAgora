@@ -19,7 +19,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Eye, Download } from 'lucide-react'
-import { DatePicker } from '../../eventos/_components/DatePicker'
+import { DatePicker } from './DatePicker'
 
 // Mock data for demonstration
 const mockPayments = [

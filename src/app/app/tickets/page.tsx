@@ -1,5 +1,5 @@
+import { TicketList } from '@/components/ticketList'
 import { Metadata } from 'next'
-import { TicketList } from './_components/ticketList'
 
 export const metadata: Metadata = {
   title: 'Meus Ingressos',

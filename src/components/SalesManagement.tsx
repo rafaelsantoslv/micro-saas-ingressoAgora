@@ -12,7 +12,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { Download, Eye } from 'lucide-react'
-import { DatePicker } from '../../eventos/_components/DatePicker'
+import { DatePicker } from './DatePicker'
 
 // Mock data for demonstration
 const mockSales = [

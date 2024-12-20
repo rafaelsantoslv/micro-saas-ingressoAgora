@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import DashboardComponent from './_components/DashBoard'
+import DashboardComponent from '../../../components/DashBoard'
 
 export const metadata: Metadata = {
   title: 'Admin Dashboard',
