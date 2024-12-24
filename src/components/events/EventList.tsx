@@ -1,6 +1,9 @@
 'use client'
 
+import { Edit, Trash2 } from 'lucide-react'
 import { useState } from 'react'
+
+import { Button } from '@/components/ui/button'
 import {
   Table,
   TableBody,
@@ -9,8 +12,6 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { Button } from '@/components/ui/button'
-import { Edit, Trash2 } from 'lucide-react'
 
 // Mock data for demonstration
 const mockEvents = [

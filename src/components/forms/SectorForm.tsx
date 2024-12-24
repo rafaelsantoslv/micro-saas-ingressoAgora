@@ -1,12 +1,13 @@
 'use client'
 
+import { Pencil, PlusCircle, Trash2 } from 'lucide-react'
 import { useState } from 'react'
+
 import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { PlusCircle, Trash2, Pencil } from 'lucide-react'
-import { Sector, Lot } from '@/types/Isector-form'
+import { Lot, Sector } from '@/types/Isector-form'
 
 export function SectorForm() {
   const [sectors, setSectors] = useState<Sector[]>([])

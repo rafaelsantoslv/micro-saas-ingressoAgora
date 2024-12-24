@@ -1,5 +1,5 @@
-import { EventForm } from '@/components/event-form'
-import { Stepper } from '@/components/stepper'
+import { Stepper } from '@/components/events/EventStepper'
+import { EventForm } from '@/components/forms/EventForm'
 
 export default function CreateEventPage() {
   return (

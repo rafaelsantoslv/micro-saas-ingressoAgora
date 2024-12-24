@@ -1,9 +1,10 @@
 'use client'
 
-import { useSearchParams, useRouter } from 'next/navigation'
-import { SectorForm } from '@/components/sector-form'
-import { NonSectorizedTicketForm } from '@/components/non-sectorized-ticket-form'
-import { Stepper } from '@/components/stepper'
+import { useRouter, useSearchParams } from 'next/navigation'
+
+import { NonSectorizedTicketForm } from '@/components/events/EventNoSectorized'
+import { Stepper } from '@/components/events/EventStepper'
+import { SectorForm } from '@/components/forms/SectorForm'
 import { Button } from '@/components/ui/button'
 
 export default function TicketsPage() {

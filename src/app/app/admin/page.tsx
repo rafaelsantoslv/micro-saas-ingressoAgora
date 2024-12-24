@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import DashboardComponent from '../../../components/DashBoard'
 
 export const metadata: Metadata = {
   title: 'Admin Dashboard',
@@ -12,7 +11,6 @@ export default function AdminDashboardPage() {
       <div className="flex items-center justify-between space-y-2">
         <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
       </div>
-      <DashboardComponent />
     </div>
   )
 }

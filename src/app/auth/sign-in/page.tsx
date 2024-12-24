@@ -1,7 +1,8 @@
 'use client'
-import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import SignInForm from '../../../components/SignInForm'
+
+import SignInForm from '@/components/forms/SignInForm'
+import { Button } from '@/components/ui/button'
 
 export default function SignInPage() {
   return (

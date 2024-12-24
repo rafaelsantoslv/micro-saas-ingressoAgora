@@ -1,11 +1,12 @@
 'use client'
 
-import { useState } from 'react'
-import { Input } from './ui/input'
-import { Button } from './ui/button'
 import { ArrowRight, Search } from 'lucide-react'
-import { UserDropdown } from './UserDropDown'
 import Link from 'next/link'
+import { useState } from 'react'
+
+import { Button } from '../ui/button'
+import { Input } from '../ui/input'
+import { UserDropdown } from './UserDropDown'
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState('')

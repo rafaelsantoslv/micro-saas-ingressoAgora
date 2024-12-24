@@ -1,4 +1,4 @@
-import { TicketCard } from './ticketCard'
+import { TicketCardAdmin } from './TicketCardAdmin'
 
 const mockTickets = [
   {
@@ -27,11 +27,11 @@ const mockTickets = [
   },
 ]
 
-export function TicketList() {
+export function TicketListAdmin() {
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {mockTickets.map((ticket) => (
-        <TicketCard key={ticket.id} ticket={ticket} />
+        <TicketCardAdmin key={ticket.id} ticket={ticket} />
       ))}
     </div>
   )

@@ -1,6 +1,7 @@
 import Link from 'next/link'
+
+import SignUpForm from '@/components/forms/SignUpForm'
 import { Button } from '@/components/ui/button'
-import AuthInput from '../../../components/authInput'
 
 export default function SignUpPage() {
   return (
@@ -16,41 +17,7 @@ export default function SignUpPage() {
           </p>
         </div>
 
-        <form className="space-y-4">
-          <AuthInput
-            labelInput="Seu nome completo"
-            typeInput="text"
-            nameInput="clientName"
-          />
-
-          <AuthInput
-            labelInput="Seu e-mail"
-            typeInput="email"
-            nameInput="clientEmail"
-          />
-
-          <AuthInput
-            labelInput="Seu número de celular"
-            typeInput="tel"
-            nameInput="clientTelephony"
-          />
-
-          <AuthInput
-            labelInput="Sua senha"
-            typeInput="password"
-            nameInput="clientPassword"
-          />
-
-          <AuthInput
-            labelInput="Sua confirmação de senha"
-            typeInput="password"
-            nameInput="clientPasswordConfirm"
-          />
-
-          <Button className="w-full" type="submit">
-            Finalizar Cadastro
-          </Button>
-        </form>
+        <SignUpForm />
 
         <p className="px-6 text-center text-sm text-muted-foreground">
           Ao continuar, você concorda com nossos{' '}

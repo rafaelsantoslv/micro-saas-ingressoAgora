@@ -1,3 +1,5 @@
+// schema.prisma
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -13,8 +15,6 @@ model User {
   email         String           @unique
   password      String?
   emailVerified DateTime?
-  accounts      Account[]
-  sessions      Session[]
   role          Role             @default(COMPRADOR)
   eventos       Evento[]         @relation("ProdutorEventos")
   ingressos     Ingresso[]
@@ -22,53 +22,20 @@ model User {
   updatedAt     DateTime         @updatedAt
 }
 
-model Account {
-  userId            String
-  type              String
-  provider          String
-  providerAccountId String
-  refreshToken      String?
-  accessToken       String?
-  expiresAt         Int?
-  tokenType         String?
-  scope             String?
-  idToken           String?
-  sessionState      String?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@id([provider, providerAccountId])
-}
-
-model Session {
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
 model Evento {
-  id                  Int          @id @default(autoincrement())
-  name                String
-  description         String?
-  date                DateTime
-  location            String
-  producerId          String
-  producer            User         @relation("ProdutorEventos", fields: [producerId], references: [id])
-  batches             Lote[]
-  tickets             Ingresso[]
-  totalTicketQuantity Int
-  soldTicketQuantity  Int          @default(0)
-  basePrice           Float
-  createdAt           DateTime     @default(now())
-  updatedAt           DateTime     @updatedAt
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String?
+  location    String
+  date        DateTime
+  producerId  String
+  producer    User      @relation("ProdutorEventos", fields: [producerId], references: [id])
+  lotes       Lote[]
+  tickets     Ingresso[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
+
 
 model Lote {
   id        Int      @id @default(autoincrement())
