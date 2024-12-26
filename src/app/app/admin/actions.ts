@@ -1,8 +1,11 @@
 'use server'
 
+import { PutObjectCommand } from '@aws-sdk/client-s3'
+import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
 import { getServerSession } from 'next-auth'
 
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import { r2 } from '@/services/coudflare'
 import { prisma } from '@/services/database'
 
 export async function addEvent(body: {
@@ -66,4 +69,17 @@ export async function getEvents() {
       error.message || 'Erro ao listar os eventos. Tente novamente mais tarde.',
     )
   }
+}
+
+export async function uploadBanner() {
+  const singnedUrl = await getSignedUrl(
+    r2,
+    new PutObjectCommand({
+      Bucket: 'agora-ticket',
+      Key: 'file.mp4',
+      ContentType: 'video/mp4',
+    }),
+    { expiresIn: 300 },
+  )
+  return singnedUrl
 }

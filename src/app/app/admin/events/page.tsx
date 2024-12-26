@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default async function EventManagementPage() {
   // Obtém os ingressos disponíveis via backend
   const tickets = await getEvents()
-  console.log('consulta tickets ', tickets)
+  console.log('consulta env ', process.env.CLOUDFLARE_SECRET_ACCESS_KEY)
 
   return (
     <div className="container mx-auto py-10">

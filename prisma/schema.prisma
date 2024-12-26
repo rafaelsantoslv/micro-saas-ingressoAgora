@@ -37,6 +37,13 @@ model Evento {
   updatedAt   DateTime  @updatedAt
 }
 
+model files {
+  id    Int  @id @default(autoincrement())
+  name  String
+  key   String
+  contentType String
+  createdAt DateTime @default(now())
+}
 
 model Lote {
   id        Int      @id @default(autoincrement())

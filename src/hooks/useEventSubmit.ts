@@ -2,7 +2,7 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { toast } from 'sonner'
 
-import { EventFormSchema } from '@/lib/schemas/eventSchema'
+import { EventFormSchema } from '@/lib/validators/eventSchema'
 
 export const useEventSubmit = () => {
   const router = useRouter()
