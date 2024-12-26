@@ -1,5 +1,6 @@
-import { TicketCard } from './TicketCard'
+import { getEvents } from '@/app/app/admin/actions'
 
+import { TicketCard } from './TicketCard'
 const mockTickets = [
   {
     id: '1',
@@ -26,12 +27,25 @@ const mockTickets = [
     status: 'inactived',
   },
 ]
+interface Ticket {
+  id: string
+  eventTitle: string
+  eventDate: string
+  ticketType: string
+  bannerUrl: string
+  status: string
+}
 
-export function TicketList() {
+interface TicketListProps {
+  tickets: Ticket[]
+  isAdmin?: boolean
+}
+
+export function TicketList({ tickets, isAdmin = false }: TicketListProps) {
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {mockTickets.map((ticket) => (
-        <TicketCard key={ticket.id} ticket={ticket} />
+      {tickets.map((ticket) => (
+        <TicketCard key={ticket.id} ticket={ticket} isAdmin={isAdmin} />
       ))}
     </div>
   )

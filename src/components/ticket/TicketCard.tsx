@@ -1,45 +1,50 @@
-import Image from 'next/image'
-import { CalendarIcon, TicketIcon } from 'lucide-react'
-import { format } from 'date-fns'
+import { format, isValid } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
+import { CalendarIcon, TicketIcon } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
 
-import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import Link from 'next/link'
+import { Card, CardContent, CardFooter } from '@/components/ui/card'
 
 interface TicketCardProps {
   ticket: {
     id: string
-    eventTitle: string
-    eventDate: string
+    name: string
+    date: string // Deve ser uma string em formato ISO ou Date
     ticketType: string
     bannerUrl: string
-    status: string
+    fl_ativo: boolean
   }
+  isAdmin?: boolean // Propriedade que define se é admin ou não
 }
 
-export function TicketCard({ ticket }: TicketCardProps) {
-  const formattedDate = format(
-    new Date(ticket.eventDate),
-    "d 'de' MMMM 'de' yyyy, HH:mm",
-    { locale: ptBR },
-  )
+export function TicketCard({ ticket, isAdmin }: TicketCardProps) {
+  // Transforme a data em um objeto Date
+  const eventDate = new Date(ticket.date)
+
+  // Valide a data antes de formatar
+  const formattedDate = isValid(eventDate)
+    ? format(eventDate, "d 'de' MMMM 'de' yyyy, HH:mm", { locale: ptBR })
+    : 'Data inválida'
 
   return (
     <Card
-      className={`overflow-hidden ${ticket.status !== 'actived' ? 'opacity-50 pointer-events-none' : ''}`}
+      className={`overflow-hidden ${
+        ticket.fl_ativo !== true ? 'opacity-50 pointer-events-none' : ''
+      }`}
     >
       <div className="relative h-48">
         <Image
           src={ticket.bannerUrl}
-          alt={`Banner do evento ${ticket.eventTitle}`}
+          alt={`Banner do evento ${ticket.name}`}
           layout="fill"
           objectFit="cover"
         />
       </div>
       <CardContent className="p-4">
-        <h2 className="text-xl font-semibold mb-2">{ticket.eventTitle}</h2>
+        <h2 className="text-xl font-semibold mb-2">{ticket.name}</h2>
         <div className="flex items-center text-sm text-gray-600 mb-2">
           <CalendarIcon className="w-4 h-4 mr-2" />
           {formattedDate}
@@ -49,16 +54,22 @@ export function TicketCard({ ticket }: TicketCardProps) {
           {ticket.ticketType}
         </div>
       </CardContent>
-      <CardFooter className="p-4 pt-0">
+      <CardFooter className="p-4 pt-0 flex items-center justify-between">
         <Badge variant="secondary">
-          {ticket.status === 'actived' ? 'Ativo' : 'inativo'}
+          {ticket.fl_ativo === true ? 'Ativo' : 'Inativo'}
         </Badge>
-        {ticket.status === 'actived' ? (
+        {ticket.fl_ativo === true && (
           <Button asChild>
-            <Link href={`/meus-ingressos/${ticket.id}`}>Ver Ingresso</Link>
+            <Link
+              href={
+                isAdmin
+                  ? `/admin/eventos/${ticket.id}`
+                  : `/meus-ingressos/${ticket.id}`
+              }
+            >
+              {isAdmin ? 'Ver Evento' : 'Ver Ingresso'}
+            </Link>
           </Button>
-        ) : (
-          ''
         )}
       </CardFooter>
     </Card>

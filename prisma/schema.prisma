@@ -30,6 +30,7 @@ model Evento {
   date        DateTime
   producerId  String
   producer    User      @relation("ProdutorEventos", fields: [producerId], references: [id])
+  fl_ativo    Boolean @default(true)
   lotes       Lote[]
   tickets     Ingresso[]
   createdAt   DateTime  @default(now())
@@ -68,3 +69,5 @@ enum StatusTransacao {
   COMPLETED
   FAILED
 }
+
+

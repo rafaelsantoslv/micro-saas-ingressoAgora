@@ -1,24 +1,19 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Upload } from 'lucide-react'
-import { useRef } from 'react'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 
+import { addEvent } from '@/app/app/admin/actions' // Importe a função do servidor
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
-import { useEventSubmit } from '@/hooks/useEventSubmit'
 import { EventFormSchema, eventSchema } from '@/lib/schemas/eventSchema'
 
 import { DatePickerField } from '../DatePickerField'
 import { FormField } from './FormField'
 
 export function EventForm() {
-  const fileInputRef = useRef<HTMLInputElement>(null)
-  const { submitEvent, isSubmitting } = useEventSubmit()
-
   const {
     register,
     handleSubmit,
@@ -35,8 +30,15 @@ export function EventForm() {
 
   const selectedDate = watch('date')
 
-  const handleSubmitForm = (data: EventFormSchema) => {
-    submitEvent(data)
+  // Chama diretamente a função `addEvent` sem passar por hooks adicionais
+  const handleSubmitForm = async (data: EventFormSchema) => {
+    try {
+      // Chama a função do servidor diretamente
+      await addEvent(data)
+      toast.success('Evento criado com sucesso')
+    } catch (error) {
+      toast.error('Erro ao criar evento ', error)
+    }
   }
 
   return (
@@ -82,9 +84,8 @@ export function EventForm() {
         <Label htmlFor="isSectorized">Evento Setorizado</Label>
       </div>
 
-
-      <Button type="submit" className="w-full" disabled={isSubmitting}>
-        {isSubmitting ? 'Enviando...' : 'Próxima Etapa'}
+      <Button type="submit" className="w-full">
+        Enviar
       </Button>
     </form>
   )
